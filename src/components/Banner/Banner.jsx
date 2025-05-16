@@ -8,7 +8,7 @@ const Banner = () => {
       style={{ backgroundImage: `url(${banner})` }}
     >
       <div className="text-white w-11/12 mx-auto">
-        <div className="w-6/12 pt-[200px]">
+        <div className="md:w-6/12 pt-[200px]">
           <h1 className="font-ran text-5xl mb-4">
             Would you like a Cup of Delicious Coffee?
           </h1>
