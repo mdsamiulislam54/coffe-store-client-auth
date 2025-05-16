@@ -1,1 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+
+
+@theme{
+  --font-ran:"Rancho", cursive;
+  --font-raleway:"Raleway", sans-serif;
+  --color-primary:#331A15;
+  --color-secondary:#ECEAE3;
+  --color-asset:#E3B577
+}
