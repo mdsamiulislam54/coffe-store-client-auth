@@ -6,7 +6,7 @@ import icon4 from '../../assets/icons/4.png'
 
 const Service = () => {
   return (
-    <div className='bg-secondary'>
+    <div className='bg-secondaryy'>
         <div className="w-11/12 mx-auto py-10 md:flex justify-between gap-4">
             <div className='shadow p-4'>
                 <img src={icon1} alt="icons1" className='w-10 mb-4' />

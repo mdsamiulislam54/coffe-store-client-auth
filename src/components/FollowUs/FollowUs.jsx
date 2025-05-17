@@ -14,7 +14,7 @@ const FollowUs = () => {
         <div className="w-11/12 mx-auto">
         <div className='flex flex-col justify-center items-center mb-10'>
             <p className='text-md font-raleway mb-4'>Follow Us Now</p>
-            <h4 className='text-4xl font-ran text-primary'> Follow on Instagram</h4>
+            <h4 className='text-4xl font-ran text-primaryC'> Follow on Instagram</h4>
 
         </div>
         <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 content-center'>

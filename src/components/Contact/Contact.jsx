@@ -10,7 +10,7 @@ const Contact = () => {
         <div className="flex justify-between ">
           <div className="">
             <img src={icons} alt="logo" className="w-12" />
-            <h2 className="text-3xl font-ran font-medium text-primary mb-4">
+            <h2 className="text-3xl font-ran font-medium text-primaryC mb-4">
               Espresso Emporium
             </h2>
             <p className="w-7/12 mb-4 font-raleway text-sm">
@@ -21,7 +21,7 @@ const Contact = () => {
                <FaInstagramSquare size={30} color="blue"/>
                <FaYoutubeSquare size={30} color='red'/>
             </div>
-             <h2 className="text-3xl font-ran  text-primary font-bold mb-3">
+             <h2 className="text-3xl font-ran  text-primaryC font-bold mb-3">
              Get in Touch
             </h2>
             <div>
@@ -31,7 +31,7 @@ const Contact = () => {
             </div>
           </div>
           <div className=" w-5/12">
-               <h2 className="text-3xl font-ran  text-primary font-bold">
+               <h2 className="text-3xl font-ran  text-primaryC font-bold">
              Get in Touch
             </h2>
             <form action="" className="flex flex-col gap-5 p-3">

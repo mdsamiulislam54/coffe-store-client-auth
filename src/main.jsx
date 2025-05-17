@@ -4,6 +4,8 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Layout from './Layout/Layout.jsx'
+import AddCoffe from './components/AddCoffe/AddCoffe.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,10 @@ const router = createBrowserRouter([
       {
         index:true,
         Component:App
+      },
+      {
+        path:'/addcoffe',
+        element:<AddCoffe/>
       }
     ]
   }
