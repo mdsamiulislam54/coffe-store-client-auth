@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <div className="py-20 bg-secondary/50 bg-cover bg-no-repeat" style={{backgroundImage:`url(${images})`}}>
       <div className=" w-11/12 mx-auto">
-        <div className="flex justify-between ">
+        <div className="md:flex justify-between ">
           <div className="">
             <img src={icons} alt="logo" className="w-12" />
             <h2 className="text-3xl font-ran font-medium text-primaryC mb-4">
@@ -30,7 +30,7 @@ const Contact = () => {
                <p className="flex items-center gap-4"> <MdLocationPin/> 72,well street,king Road Dhaka </p>
             </div>
           </div>
-          <div className=" w-5/12">
+          <div className=" md:w-5/12">
                <h2 className="text-3xl font-ran  text-primaryC font-bold">
              Get in Touch
             </h2>

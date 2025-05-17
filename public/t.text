@@ -1,0 +1,56 @@
+[
+  {
+    name: 'Sweet Mocha Bliss',
+    chef: 'Hasan Mondol',
+    suplier: 'Pick',
+    taste: 'Sweet',
+    category: 'Coffee',
+    details: 'Freshly brewed sweet coffee.',
+    photo: 'https://i.postimg.cc/HLs1mNSB/md-shamiul-islam-cv-photo.png'
+  },
+  {
+    name: 'Dark Espresso Shot',
+    chef: 'Rubel Khan',
+    suplier: 'Fresh Drinks',
+    taste: 'Bitter',
+    category: 'Espresso',
+    details: 'Strong black espresso shot.',
+    photo: 'https://i.postimg.cc/3x3QzSGq/male.png'
+  },
+  {
+    name: 'Creamy Latte Classic',
+    chef: 'Mithu Rahman',
+    suplier: 'Premium Beans',
+    taste: 'Latte',
+    category: 'Coffee',
+    details: 'Latte with smooth milk foam.',
+    photo: 'https://i.postimg.cc/HLs1mNSB/md-shamiul-islam-cv-photo.png'
+  },
+  {
+    name: 'Caramel Cappuccino',
+    chef: 'Shanto Mia',
+    suplier: 'Coffee House',
+    taste: 'Caramel',
+    category: 'Cappuccino',
+    details: 'Creamy cappuccino with caramel.',
+    photo: 'https://i.postimg.cc/3x3QzSGq/male.png'
+  },
+  {
+    name: 'Chocolate Mocha',
+    chef: 'Al-Amin',
+    suplier: 'Nescafe',
+    taste: 'Mocha',
+    category: 'Coffee',
+    details: 'Delicious mocha with chocolate.',
+    photo: 'https://i.postimg.cc/HLs1mNSB/md-shamiul-islam-cv-photo.png'
+  },
+  {
+    name: 'Classic Americano',
+    chef: 'Sajid Khan',
+    suplier: 'Brew House',
+    taste: 'Sweet',
+    category: 'Americano',
+    details: 'Classic americano with extra shot.',
+    photo: 'https://i.postimg.cc/3x3QzSGq/male.png'
+  }
+]

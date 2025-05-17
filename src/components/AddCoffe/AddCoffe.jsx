@@ -1,16 +1,47 @@
 import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddCoffe = () => {
+  const handleAddCoffe = (e) => {
+    e.preventDefault();
+  
+    const from = e.target;
+    const fromData = new FormData(from);
+    const coffeData = Object.fromEntries(fromData.entries())
+  
+
+    // send data server 
+
+    fetch('http://localhost:5000/coffe',{
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(coffeData)
+    } )
+    .then(res => res.json())
+    .then(data => {
+       toast.success("Coffe Sucessfully added!",{autoClose:2000})
+    })
+
+
+  };
   return (
     <div className="min-h-screen">
       <div className="w-11/12 mx-auto">
         <div className="my-4">
-          <Link to={'/'} className="text-xl text-shadow-neutral-900 font-bold font-ran flex items-center gap-4 cursor-pointer"> <FaArrowLeft/> Back To Home</Link>
+          <Link
+            to={"/"}
+            className="text-xl text-shadow-neutral-900 font-bold font-ran flex items-center gap-4 cursor-pointer"
+          >
+            {" "}
+            <FaArrowLeft /> Back To Home
+          </Link>
         </div>
         <div className="bg-secondaryy/80 p-10">
-          <div className="flex flex-col justify-center items-center gap-4 w-9/12 mx-auto text-center mb-10">
+          <div className="flex flex-col justify-center items-center gap-4 md:w-9/12 mx-auto text-center mb-10">
             <h1 className="font-ran text-5xl mb-4 font-medium">
               Add New Coffee
             </h1>
@@ -21,8 +52,8 @@ const AddCoffe = () => {
               distribution of letters, as opposed to using Content here.
             </p>
           </div>
-          <form action="" className="">
-            <div className="grid grid-cols-1 md:grid-cols-2">
+          <form onSubmit={handleAddCoffe} action="" className="">
+            <div className="md:grid grid-cols-1 md:grid-cols-2">
               <fieldset className="fieldset  border-base-300 rounded-box w-full border p-4">
                 <label className="label">Name</label>
                 <input
@@ -86,10 +117,15 @@ const AddCoffe = () => {
                   placeholder="Enter your photo url"
                 />
               </fieldset>
-              <input type="submit" value='Add Coffe' className="text-xl font-ran w-full col-span-2 bg-assett m-4 p-2 rounded-md border-2 border-primaryC hover:bg-transparent transition-all duration-300 cursor-pointer" />
+              <input
+                type="submit"
+                value="Add Coffe"
+                className="text-xl font-ran w-full col-span-2 bg-assett md:m-4 p-2 rounded-md border-2 border-primaryC hover:bg-transparent transition-all duration-300 cursor-pointer"
+              />
             </div>
           </form>
         </div>
+        <ToastContainer/>
       </div>
     </div>
   );
