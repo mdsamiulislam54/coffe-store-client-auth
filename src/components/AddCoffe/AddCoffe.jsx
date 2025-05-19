@@ -2,6 +2,7 @@ import React from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const AddCoffe = () => {
   const handleAddCoffe = (e) => {
@@ -10,9 +11,9 @@ const AddCoffe = () => {
     const from = e.target;
     const fromData = new FormData(from);
     const coffeData = Object.fromEntries(fromData.entries())
-  
 
-    // send data server 
+
+  // data send server
 
     fetch('http://localhost:5000/coffe',{
         method:"POST",
@@ -23,7 +24,11 @@ const AddCoffe = () => {
     } )
     .then(res => res.json())
     .then(data => {
-       toast.success("Coffe Sucessfully added!",{autoClose:2000})
+      Swal.fire({
+        title:"Coffe added successfully !",
+        icon:"success",
+        
+      })
     })
 
 
@@ -91,10 +96,10 @@ const AddCoffe = () => {
                 />
               </fieldset>
               <fieldset className="fieldset  border-base-300 rounded-box w-full border p-4">
-                <label className="label">Category</label>
+                <label className="label">Price</label>
                 <input
                   type="text"
-                  name="category"
+                  name="price"
                   className="input w-full"
                   placeholder="Enter coffe category"
                 />

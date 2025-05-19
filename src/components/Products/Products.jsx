@@ -7,8 +7,11 @@ import { FaEye } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
 import { MdDeleteForever } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 const Products = () => {
   const [coffeData, setCoffeData] = useState([]);
+  const [coffe, setCoffe] = useState({})
+ console.log(coffe);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,26 +22,100 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const handleCoffeDelete = (id)=>{
-    fetch(`http://localhost:5000/coffe/${id}`,{
-      method:"DELETE",
-      headers:{
-        "content-type":"application/json"
-      },
-
-    })
-    .then(res => res.json())
-    .then(data =>{
-      if(data.deletedCount === 1){
-        toast.success("Coffe deleted successfully!",{autoClose:2000})
-        const newCoffe = coffeData.filter((cofee)=> cofee._id !== id);
-        setCoffeData(newCoffe)
-      }else{
-        toast.error("Coffe deleted unsuccessfully!")
+  const handleCoffeDelete = (id) => {
+    // Confirmation alert
+    Swal.fire({
+      title: "Delete Coffee?",
+      text: "This action cannot be undone",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Delete request
+        fetch(`http://localhost:5000/coffe/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount === 1) {
+              // Success alert
+              Swal.fire("Deleted!", "Coffee removed successfully", "success");
+              // Update state
+              setCoffeData((prev) =>
+                prev.filter((coffee) => coffee._id !== id)
+              );
+            }
+          })
+          .catch(() => {
+            // Error alert
+            Swal.fire("Error!", "Failed to delete coffee", "error");
+          });
       }
-    })
+    });
+  };
 
-  }
+  // const openModal = (coffe)=>{
+  //   setCoffe(coffe)
+  //   document.getElementById("my_modal_1").showModal()
+  // }
+
+  // const handleCoffeUpdate = e => {
+  //   e.preventDefault();
+  //   const form = e.target;
+  //   const formData = new FormData(form);
+  //   const updateData = Object.fromEntries(formData);
+  
+  //   // Show loading alert
+  //   Swal.fire({
+  //     title: 'Updating...',
+  //     allowOutsideClick: false,
+  //     didOpen: () => {
+  //       Swal.showLoading();
+  //     }
+  //   });
+  
+  //   // Update data on server
+  //   fetch(`http://localhost:5000/coffe/${coffe._id}`, {
+  //     method: "PUT",
+  //     headers: {
+  //       "content-type": "application/json"
+  //     },
+  //     body: JSON.stringify(updateData)
+  //   })
+  //   .then(res => {
+  //     if (!res.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     return res.json();
+  //   })
+  //   .then(data => {
+      
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: 'Updated!',
+  //       text: 'Coffee information has been updated successfully',
+  //       confirmButtonColor: '#3085d6',
+  //     });
+  //     setCoffeData(prevData => 
+  //       prevData.map(item => 
+  //         item._id === coffe._id ? { ...item, ...data } : item
+  //       )
+  //     );
+  //     document.getElementById("my_modal_1").close();
+  //     console.log("Updated successfully", data);
+  //   })
+  //   .catch(error => {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: 'Update Failed',
+  //       text: error.message || 'Failed to update coffee information',
+  //       confirmButtonColor: '#d33',
+  //     });
+  //     console.error("Update error:", error);
+  //   });
+  // };
 
   return (
     <div className="min-h-screen relative">
@@ -46,7 +123,7 @@ const Products = () => {
       <img
         src={images2}
         alt=""
-        className="absolute top-[400px] right-0 w-55 -z-1"
+        className="absolute top-[330px] right-0 w-55 -z-1"
       />
       <div className="w-11/12 mx-auto">
         <div className="flex flex-col justify-center items-center mb-20">
@@ -60,7 +137,6 @@ const Products = () => {
           </Link>
         </div>
 
-        
         <div className="z-100 grid md:grid-cols-2 gap-4 w-10/12 mx-auto">
           {coffeData.map((coffe) => {
             return (
@@ -76,20 +152,36 @@ const Products = () => {
                     <h2>Chef: {coffe.chef}</h2>
                   </div>
                   <div>
-                    <h2>Price: 800 Taka</h2>
+                    <h2>Price: {coffe.price} Taka</h2>
                   </div>
-                  
                 </div>
                 <div className="flex flex-col gap-4">
-                    <Link className="p-3 bg-assett rounded-lg"><FaEye/></Link>
-                    <Link className="p-3 bg-black text-white rounded-lg"> <CiEdit /> </Link>
-                    <Link onClick={()=>handleCoffeDelete(coffe._id)} className="p-3 bg-red-400 rounded-lg"><MdDeleteForever /></Link>
-                  </div>
+                  <Link
+                    to={`coffedetails/${coffe._id}`}
+                    className="p-3 bg-assett rounded-lg"
+                  >
+                    <FaEye />
+                  </Link>
+                  <Link className="p-3 bg-black text-white rounded-lg" accordion
+                  to={`coffeupdate/${coffe._id}`}
+                  >
+                    {" "}
+                    <CiEdit />{" "}
+                  </Link>
+                  <Link
+                    onClick={() => handleCoffeDelete(coffe._id)}
+                    className="p-3 bg-red-400 rounded-lg"
+                  >
+                    <MdDeleteForever />
+                  </Link>
+                </div>
               </div>
             );
           })}
         </div>
-        <ToastContainer/>
+
+
+       
       </div>
     </div>
   );
